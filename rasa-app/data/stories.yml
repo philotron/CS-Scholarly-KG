@@ -1,0 +1,94 @@
+version: "3.1"
+
+stories:
+  - story: happy path, greeting
+    steps:
+      - intent: greet
+      - action: utter_greet_and_ask
+
+  - story: happy path, topic prediction
+    steps:
+      - intent: topic_predict_intent
+      - action: action_predict_topic  
+
+  - story: happy path, topic overview
+    steps:
+      - intent: taxonomy_intent
+      - action: utter_type_taxonomy
+
+  - story: happy path, short taxonomy
+    steps:
+      - intent: short
+      - action: utter_taxonomy_level1
+
+  - story: happy path, long taxonomy
+    steps:
+      - intent: everything
+      - action: utter_taxonomy_general
+
+  - story: happy path, topic definition exploration
+    steps:
+      - intent: topic_intent
+        entities:
+          - topic_name
+      - action: action_get_topic_definition
+
+  - story: happy path, subtopic definition exploration
+    steps:
+      - intent: subtopic_intent
+        entities:
+          - topic_name
+      - action: action_get_topic_children
+
+  - story: happy path, parenttopic definition exploration
+    steps:
+      - intent: parent_intent
+        entities:
+          - topic_name
+      - action: action_get_topic_parent
+
+  - story: happy path, subcluster exploration with topic name
+    steps:
+      - intent: subtopic_cluster_intent
+        entities:
+          - topic_name
+      - action: action_get_subclusters
+      - intent: select_cluster_option
+        entities:
+          - selected_clusters
+      - action: action_capture_cluster_selection
+      - action: action_show_paper_list_for_comparison
+
+  - story: happy path, subcluster exploration
+    steps:
+      - intent: subtopic_cluster_intent
+      - action: action_get_subclusters
+      - intent: select_cluster_option
+        entities:
+          - selected_clusters
+      - action: action_capture_cluster_selection
+      - action: action_show_paper_list_for_comparison
+
+  - story: happy path, paper option for comparison
+    steps:
+      - action: action_show_paper_list_for_comparison
+      - intent: paper_selection_for_comparison_intent
+        entities:
+          - paper_a
+          - paper_b
+      - action: utter_select_comparison_option
+
+  - story: happy path, paper option for summarization
+    steps:
+      - action: action_show_paper_list_for_comparison
+      - intent: paper_selection_for_summarization_intent
+        entities:
+          - summarized_paper
+      - action: action_get_paper_summarization 
+      - action: utter_paper_url   
+
+  - story: happy path, taxonomy exploration
+    steps:
+      - intent: taxonomy_intent
+      - action: utter_type_taxonomy
+

@@ -1,0 +1,6 @@
+Flask==2.3.2
+setfit==0.7.0
+transformers==4.25.1
+adapter-transformers==3.2.1
+weaviate_client==3.19.2
+gdown==4.7.1

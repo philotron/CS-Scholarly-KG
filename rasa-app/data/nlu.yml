@@ -1,0 +1,582 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - hey hey
+      - nice to meet you
+      - nice to talk to you
+      - hallo
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - good night
+      - bye
+      - see you
+      - byeee
+      - bb
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+
+  - intent: affirm
+    examples: |
+      - sure, a link would be helpful—thank you!
+      - y
+      - yes
+      - ok
+      - yes, please
+      - ok, show me the links
+      - indeed, that is accurate.
+      - of course, a link would be perfect.
+      - That sounds good
+      - that's correct. Please go on with the details.
+      - yeah, you are right
+      - Yes, that would be great. I want to explore the topic in detail
+      - yeah, that's exactly the topic I was thinking about
+      - okey, you nailed it. Let's delve deeper
+      - Definitely, I'm interested in getting the link to delve deeper.
+      - exactly, continue with the definition and more details
+      - absolutely, you got it right
+      - Go on
+      - ok thanks
+      - sure
+      - yep
+      - definitely
+      - continue
+      - that's right. Can we explore further now?
+      - yes, show me the links please. I'd like to read the full text of them
+      - sure, let me know the links of these two papers
+
+  - intent: deny
+    examples: |
+      - no
+      - n
+      - no stop
+      - that is wrong
+      - never
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+      - No, that's not the right topic
+      - you missed it. What else can you suggest?
+      - That's not what I was looking for
+      - Nope, that doesn't sound right.
+      - that's incorrect. Can you try another prediction?
+      - Unfortunately, you are wrong
+      - wrong guess
+      - Not interested in the link, thanks
+      - Maybe later, I don't need the link right now
+      - I'd rather not have the link at the moment
+      - I'll pass on it
+      - nope, not now
+      - no, it's incorrect
+      - I don't mean this
+      - I meant something else
+      - no it is different
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - let's know each other
+      - tell me some information about yourself
+      - who are you?
+      - introduce yourself
+      - what can you do?
+      - tell me what you can do
+      - what are you?
+      - who is LISSA?
+      - Help
+      - What do you provide
+      - What are questions I could ask you
+      - Hey Lissa 
+      - Can you help me
+      - What can you do?
+      - What are your capabilities?
+      - Can you help me?
+      - Show me what you can do.
+      - How can you assist me?
+      - What tasks can you perform?
+      - Can you explain your features?
+      - Tell me what you're capable of.
+      - Show me your capabilities.
+      - I need assistance, what can you provide?
+      - I need help, what tasks can you handle?
+      - Explain what you can do.
+      - What services can you provide?
+      - I'm not sure what to do, can you help?
+
+  - intent: manually_reset_topic
+    examples: |
+      - ↩️
+      - ↩️ Reset
+      - I want to reset
+      - Reset topic
+      - Restart
+      - Can we change the topic now?
+      - I'd like to reset the topic
+      - Reset the current topic
+      - Time to change gears and pick a new topic
+      - reset please
+      - restart please
+      - start again please
+      - start again
+      - initialize the conversation
+      - Can we start over?
+      - I'd like to begin again with a new topic
+      - Let's reset our conversation
+      - I think we should start fresh
+      - could we clear this topic and talk about something else?
+      - Restart this discussion
+      - let's go back to the beginning
+      - erase this topic and let's start from scratch
+      - can I start again?
+
+  - intent: select_cluster_option
+    examples: |
+      - [1](selected_clusters)
+      - [2](selected_clusters)
+      - Number [5](selected_clusters)
+      - I choose [2](selected_clusters)
+      - I want [2](selected_clusters)
+      - number [1](selected_clusters)
+      - Select cluster [2](selected_clusters)
+      - The [3](selected_clusters) one
+      - Cluster number [4](selected_clusters)
+      - cluster [9](selected_clusters)
+      - subcluster [2](selected_clusters)
+      - Nr. [3](selected_clusters)
+      - No. [4](selected_clusters)
+      - Please [2](selected_clusters)
+
+  - intent: topic_intent
+    examples: |
+      - What is the definition of [Semantic Search](topic_name)
+      - I am interested in [NLP](topic_name)
+      - I am interested in [Natural Language Processing](topic_name)
+      - Give me definition for [nlp](topic_name)
+      - Give me a definition for [Natural Language Processing](topic_name)
+      - [nlu](topic_name)
+      - [Natural Language Generation](topic_name) seems interesting
+      - I'll choose [Sentiment Analysis](topic_name)
+      - Can you give details about [NLP](topic_name)
+      - I need more information on [Natural Language Generation](topic_name)
+      - Can you fetch description for [natural language understanding](topic_name)
+      - Please describe [Speech to Text](topic_name)
+      - What is the definition of [Summarization](topic_name)?
+      - What is the definition of [Natural Language Interfaces](topic_name)?
+      - Describe [Natural Language Generation](topic_name)
+      - Describe [Natural Language Understanding](topic_name)
+      - describe the subtopic [Machine Translation](topic_name)
+      - Get me more info on [Natural Language Understanding](topic_name)
+      - Do you have more details on [Data to Text Generation](topic_name)
+      - Can you give a short explanation on [question answering systems](topic_name)
+      - Explain [large language models](topic_name)
+      - explain [Text Similarity](topic_name)
+      - Shortly describe [Dialogue Systems](topic_name)
+      - Can you inform me about [nlg](topic_name)
+      - Can you tell me more about [Reasoning](topic_name)?
+      - What does [Argument Mining](topic_name) mean?
+      - I would like to understand [Commonsense Reasoning](topic_name).
+      - Explain to me what [textual inference](topic_name) is.
+      - Give me the definition of [Knowledge Graph Reasoning](topic_name).
+      - I need information about [Numerical Reasoning](topic_name).
+      - Can you tell me what [Machine Reading Comprehension](topic_name) is?
+      - I like to know more about [fact & claim verification](topic_name).
+      - Please explain [Text Style Transfer](topic_name) to me.
+      - I am curious about [Dialogue Response Generation](topic_name).
+      - Tell me something about [Captioning](topic_name).
+      - I want to learn about [Speech Recognition](topic_name).
+      - What can you tell me about [Code Generation](topic_name)?
+      - I am interested in [Machine Translation](topic_name).
+      - Can you tell me about [question generation](topic_name)?
+      - Explain [Paraphrasing](topic_name) to me.
+      - I'm interested in [Data-to-Text Generation](topic_name), can you provide more details?
+      - Could you explain [Sentiment Analysis](topic_name)?
+      - I'd like to learn about [Opinion Mining](topic_name).
+      - Can you provide some details on [emotion analysis](topic_name)?
+      - I am curious about [polarity analysis](topic_name).
+      - Tell me more about [Stylistic Analysis](topic_name).
+      - What does [Aspect-based Sentiment Analysis](topic_name) mean?
+      - Could you define [intent recognition](topic_name) for me?
+      - I want to learn more about [Multilinguality](topic_name).
+      - Can you explain [Code-Switching](topic_name)?
+      - What can you tell me about [Cross-Lingual Transfer](topic_name)?
+      - I am interested in [Typology](topic_name).
+      - Tell me about [Syntactic Text Processing](topic_name).
+      - Explain the topic of [Text Error Correction](topic_name).
+      - I'd like to know about [Chunking](topic_name).
+      - Can you describe [Tagging](topic_name) in detail?
+      - What does [Text Normalization](topic_name) involve?
+      - I want to switch to [Code Generation](topic_name)
+      - Let's switch our focus to [Text Generation](topic_name)
+      - Change topic to [Q&A systems](topic_name)
+
+  - intent: subtopic_intent
+    examples: |
+      - What are subfields of [reasoning](topic_name)
+      - Name subtopics of [text generation](topic_name)
+      - I am interested in the subfields of [Sentiment Analysis](topic_name)
+      - Get me subtopics for [Multilinguality](topic_name)
+      - can you please fetch subfields for [Syntactic Text Processing](topic_name)
+      - Can you please search subtopics for [Linguistics & Cognitive NLP](topic_name)
+      - Show me subtopics for [information extraction & text mining](topic_name)
+      - What are subfields of [Information Retrieval](topic_name)?
+      - Name subtopics of [responsible NLP](topic_name).
+      - I am interested in the subtopics of [Multimodality](topic_name).
+      - Get me subfields for [natural language interfaces](topic_name).
+      - Can you please fetch subtopics for [semantic text processing](topic_name)?
+      - Tell me the subtopics for [semantic text processing](topic_name)?
+      - What subtopics are there for [Syntactic Text Processing](topic_name)?
+      - Subtopics [Syntactic Text Processing](topic_name)?
+      - subfields
+      - subfield
+      - subtopics
+      - subtopic
+      - Subfields
+      - Subfield
+      - Subtopics
+      - Subtopic
+      - I want to know more about its subfields
+      - Can you tell me about the subtopics?
+      - I'm interested in the subfields
+      - Can you provide more information about the subtopics?
+      - I want to know more about the subfields
+      - Can you tell me about the subfields?
+      - I'm interested in the subtopics
+      - Can you provide more information about the subfields?
+
+  - intent: subtopic_cluster_intent
+    examples: |
+      - Cluster of [topic modeling](topic_name)
+      - Clusters [topic modeling](topic_name)
+      - What are clusters of [fact & claim verification](topic_name)
+      - Name clusters of [data-to-text generation](topic_name)
+      - I am interested in the clusters of [machine translation](topic_name)
+      - I want to know about different segments within [Text Classification](topic_name)
+      - can you please fetch subclusters for [document retrieval](topic_name)
+      - I'd like to explore various subclusters related to [Indexing](topic_name)
+      - Show me clusters for [semantic search](topic_name)
+      - Can you break down the subclusters of [Ethical NLP](topic_name)
+      - Are there clusters under [Explainability & Interpretability in NLP](topic_name) I can look into
+      - explore this domain [captioning](topic_name) in more detail
+      - Can you please search clusters for [text style transfer](topic_name)?
+      - Could you tell me the clusters of [polarity analysis](topic_name)?
+      - List the clusters under [Stylistic Analysis](topic_name).
+      - I'd like to know the clusters of [Aspect-based Sentiment Analysis](topic_name).
+      - What clusters under the [Intent Recognition](topic_name) topic?
+      - Can you list the clusters covered by [Multilinguality](topic_name)?
+      - What are the clusters in [Code-Switching](topic_name)?
+      - List the subclusters components of [Cross-Lingual Transfer](topic_name).
+      - I want to learn about the different clusters of [Syntactic Text Processing](topic_name)
+      - Can you list the clusters under [passage retrieval](topic_name)?
+      - What different clusters are covered under [programming languages in NLP](topic_name)?
+      - What clusters exist within [dialogue systems & conversational agents](topic_name)?
+      - Can you explain the different clusters of [language models](topic_name)?
+      - What are the applications of study in [visual data in NLP](topic_name)?
+      - What clusters are included in [robustness in NLP](topic_name)?
+      - What are the related clusters under [green & sustainable NLP](topic_name)?
+      - Can you detail the clusters of [knowledge graph reasoning](topic_name)?
+      - What clusters are covered under [word sense disambiguation](topic_name)?
+      - Can you list the specialized applications in [named entity recognition](topic_name)?
+      - What are the clusters of [relation extraction](topic_name)?
+      - What are the various applications of [open information extraction](topic_name)?
+      - Can you identify the applications of [fact & claim verification](topic_name)?
+      - What are the different specializations in [Aspect-based Sentiment Analysis](topic_name)?
+      - What clusters of research fall under [Speech & Audio in NLP](topic_name)?
+      - Can you describe the different clusters of [Low-Resource NLP](topic_name)?
+      - What clusters does [Data-to-Text Generation](topic_name) encompass?
+      - show me the clusters of topics under [responsible & trustworthy NLP](topic_name)
+      - subclusters
+      - clusters
+      - cluster
+      - I want to know more about this branch
+      - Can you tell me about the different areas within it?
+      - I'm interested in the subcategories that fall under this domain
+      - then continue to delve the subclusters of this topic
+      - go ahead to explore the clusters of it
+      - tell me the paper clusters
+      - could you please list the clusters of this topic?
+      - great, maybe you can tell more about the clusters of it?
+      - you might show me the subclusters of this topic
+
+  - intent: parent_intent
+    examples: |
+      - What are parents of (topic_name)
+      - Name parents of [Text Generation](topic_name)
+      - I am interested in the parents of [Text Similarity](topic_name)
+      - Get me parents for [NLP](topic_name)
+      - can you please fetch parents for [Text Normalization](topic_name)
+      - Can you please search parents for [Question Answering Systems](topic_name)
+      - I want to explore [Information Extraction](topic_name) today
+      - Show me parents for [Natural Language Understanding](topic_name)
+      - What are the parent topics of [Machine Reading Comprehension](topic_name)?
+      - Name the parent topics of [Fact & Claim Verification](topic_name).
+      - I am interested in the parent topics of [Code Generation](topic_name).
+      - Can you get me the parent topics for [Speech Recognition](topic_name)?
+      - Can you please fetch the parent topics for [Dialogue Response Generation](topic_name)?
+      - Can you search for the parent topics of [Text Style Transfer](topic_name)?
+      - Show me the parent topics for [Captioning](topic_name).
+      - Could you tell me the parent topics of [Polarity Analysis](topic_name)?
+      - List the parent topics of [Stylistic Analysis](topic_name).
+      - I'd like to know the parent topics of [Aspect-based Sentiment Analysis](topic_name).
+      - What are the parent topics of [Intent Recognition](topic_name)?
+      - Can you list the parent topics of [Multilinguality](topic_name)?
+      - What are the parent topics of [Code-Switching](topic_name)?
+      - List the parent topics of [Cross-Lingual Transfer](topic_name).
+      - I want to know the parent topics of [Syntactic Text Processing](topic_name).
+      - Who are the parent topics of [Text Error Correction](topic_name)?
+      - Can you tell me the parent topics for [Chunking](topic_name)?
+      - What's the parent topic for [Tagging](topic_name)?
+      - Can you show me the parent topics for [Text Normalization](topic_name)?
+      - Who are the parent topics of [Phonology](topic_name)?
+      - What are the parent topics of [Text Segmentation](topic_name)?
+      - What are the parent topics of [Phonetics](topic_name)?
+      - I want to learn about the parent topics of [Syntactic Parsing](topic_name).
+      - Can you tell me what the parent topics of [Morphology](topic_name) are?
+      - Can you find the parent topics for [Linguistics & Cognitive NLP](topic_name)?
+      - Show me the parent topics of [Cognitive Modeling](topic_name).
+      - I'm interested in the parent topics of [Psycholinguistics](topic_name).
+      - Can you list the parent topics for [Linguistic Theories](topic_name)?
+      - Could you find the parent topics for [Information Extraction & Text Mining](topic_name)?
+      - I want to know more about the parent topics of [Summarization](topic_name).
+
+  - intent: taxonomy_intent
+    examples: |
+      - Show me the overview of nlp topics
+      - What are NLP topics?
+      - Show me the taxonomy
+      - How does the taxonomy look like?
+      - What is the scope of topics
+      - NLP topic overview
+      - Natural Language Processing topics
+      - Can you show me the taxonomy of NLP?
+      - I'd like to explore the taxonomy of natural language processing.
+      - Could you present the NLP taxonomy?
+      - How is the taxonomy of NLP structured?
+      - Can you walk me through the NLP taxonomy?
+      - I'm interested in the NLP taxonomy, can you show me?
+      - Please present the taxonomy of natural language processing.
+      - Show me the full taxonomy of NLP.
+      - Can you provide an overview of the NLP taxonomy?
+      - I want to know about the full taxonomy in natural language processing.
+      - Help me explore the taxonomy of NLP.
+      - Can you guide me through the taxonomy of natural language processing?
+      - How does the NLP taxonomy look like?
+      - Please provide a breakdown of the NLP taxonomy.
+      - Can you help me understand the taxonomy of natural language processing?
+
+  - intent: paper_selection_for_comparison_intent
+    examples: |
+      - paper [1](paper_a) and paper [2](paper_b)
+      - [1](paper_a), [2](paper_b)
+      - [3](paper_a), [5](paper_b)
+      - [5](paper_a) and [6](paper_b)
+      - the [2] paper(paper_a) and the [4] one(paper_b)
+      - the [4].(paper_a) and the [7].(paper_b)
+      - [8]th(paper_a) and [9]th(paper_b) papers
+      - select papers number [3](paper_a) and [5](paper_b)
+      - I'm interested in the [1](paper_a) and [3](paper_b) papers
+      - Could you compare papers [7](paper_a) and [9](paper_b)?
+      - papers number [2](paper_a) and [6](paper_b) please
+      - Show me papers [4](paper_a) and [10](paper_b)
+      - I'd like to compare paper [1](paper_a) with paper [2](paper_b)
+      - let me know the differences between paper [3](paper_a) and paper [4](paper_b)
+      - tell me the similarities and differences between paper [6](paper_a) and paper [9](paper_b)
+      - Please explain the similarities and differences between paper [3](paper_a) and paper [7](paper_b).
+
+  - intent: paper_selection_for_summarization_intent
+    examples: |
+      - summarize paper [1](summarized_paper)
+      - TL;DR paper [2](summarized_paper)
+      - tldr summary paper [3](summarized_paper)
+      - Give me the tl;dr of paper [9](summarized_paper)
+      - summarize paper [1](summarized_paper)
+      - show me the summary of paper [1](summarized_paper)
+      - summarize the [4](summarized_paper) one
+      - the [7](summarized_paper). paper's summary
+      - [8](summarized_paper) paper summary
+      - select [9](summarized_paper) paper to summarize
+      - select papers number [3](summarized_paper) for summarization
+      - I'm interested in the [1](summarized_paper) paper
+      - Could you summarize paper [7](summarized_paper)?
+      - papers number [2](summarized_paper) please
+      - Show me the summary of paper [4](summarized_paper)
+      - what's the summarization of paper [5](summarized_paper)
+      - What are the key findings in paper [7](summarized_paper)?
+      - Could you provide a summary of paper [4](summarized_paper)?
+      - I need a brief overview of paper [10](summarized_paper)
+      - Summarize the main points of paper [3](summarized_paper) for me, please
+      - Can you give me the highlights from paper [8](summarized_paper)?
+      - please provide a condensed version of paper [12](summarized_paper).
+
+  - intent: topic_predict_intent
+    examples: |
+      - tell me the various kinds of emotion about COVID 19
+      - analyze the writting style of the reports released in 2020
+      - I need to create exam questions
+      - How can I automatically summarize financial reports?
+      - I want to identify emotions in text data
+      - I want to generate program code
+      - What's the best way to translate a webpage?
+      - I want to summarize laboratory reports
+      - I need to understand customer feedback better
+      - Can a computer understand jokes?
+      - How can I generate exam questions for programming.
+      - I want to analyze emotions about covid 19 on twitter
+      - How do I make a bot that answers questions?
+      - Is there a way to find the main points in the text
+      - I'd like to write a program to help me create new acticles
+      - my task is to change the writing style of a document to sound more formal.
+      - What's the key to making chatbots reply more naturally?
+      - How can images be automatically given captions
+      - I'm intrested in the technology turns spoken words into written text
+      - I met some problems by coding and need help from AI to fix my bugs.
+      - I need a smart robot to embellish my thesis.
+      - Is it possible for machines to recognize emotions in text?
+      - I'm curious about determining whether opinions are positive or negative
+      - analyze the writing style of different authors
+      - It's important for me to identify what users intend to do with their commands.
+      - how to analyze texts that mix different languages
+      - I'm looking for ways to automatically correct grammar and spelling mistakes in texts.
+      - I'd like to group words in a sentence into chunks that are meaningful.
+      - I want to standardize text data before processing it further.
+      - What can I do to summarize news online about covid-19?
+      - I want to do emotion analysis about covid 19 on social platform
+      - there are many sound systems of languages, how they are understood by machines.
+      - I'd like to know how to make a chatbot that can understand the meaning of a sentence.
+      - I want to learn the technology of language translation in the machine
+      - How can I train my intelligent assisstant to classify the text
+      - I want a chatbot that can polish up my writing
+      - I would like to know the difference between the GPT and the Bert large language model
+      - how can I make the output of my chat assisstant more natural
+      - I want to learn some basic knowlwdge about dialog system
+      - How AI identifies the veracity of online news
+      - I would like to know how the DALLE model generates images from text descriptions
+      - I want to automatically convert a program written in Java to python
+      - How automatic generation of subtitles for films is achieved
+      - How to generate an automatic dubbing based on a script
+      - What are the new technologies that can be used to enhance the emotional understanding of conversational bots
+
+  - intent: unclear_intent
+    examples: |
+      - Are there any new papers on that topic... umm, the one with the algorithms?
+      - What was that method in NLP for... I forgot the name, but it deals with words?
+      - paper comparison
+      - list subclusters
+      - objective comparison between them
+      - How do papers compare on translation topics?
+      - compare
+      - list
+      - what's the definition?
+      - tell me about it.
+
+  - lookup: topic_name
+    examples: |
+      - Natural Language Processing
+      - NLP
+      - Reasoning
+      - Argument Mining
+      - Commonsense Reasoning
+      - Textual Inference
+      - Knowledge Graph Reasoning
+      - Numerical Reasoning
+      - Machine Reading Comprehension
+      - Fact & Claim Verification
+      - Text Generation
+      - Text Style Transfer
+      - Dialogue Response Generation
+      - Captioning
+      - Speech Recognition
+      - Code Generation
+      - Machine Translation
+      - Question Generation
+      - Paraphrasing
+      - Data-to-Text Generation
+      - Summarization
+      - Sentiment Analysis
+      - Opinion Mining
+      - Emotion Analysis
+      - Polarity Analysis
+      - Stylistic Analysis
+      - Aspect-based Sentiment Analysis
+      - Intent Recognition
+      - Multilinguality
+      - Machine Translation
+      - Code-Switching
+      - Cross-Lingual Transfer
+      - Typology
+      - Syntactic Text Processing
+      - Text Error Correction
+      - Chunking
+      - Tagging
+      - Text Normalization
+      - Phonology
+      - Text Segmentation
+      - Phonetics
+      - Typology
+      - Syntactic Parsing
+      - Morphology
+      - Linguistics & Cognitive NLP
+      - Cognitive Modeling
+      - Psycholinguistics
+      - Linguistic Theories
+      - Information Extraction & Text Mining
+      - Summarization
+      - Text Clustering
+      - Open Information Extraction
+      - Event Extraction
+      - Topic Modeling
+      - Text Classification
+      - Named Entity Recognition
+      - Coreference Resolution
+      - Term Extraction
+      - Relation Extraction
+      - Information Retrieval
+      - Text Classification
+      - Document Retrieval
+      - Indexing
+      - Semantic Search
+      - Passage Retrieval
+      - Responsible NLP
+      - Green & Sustainable NLP
+      - Robustness in NLP
+      - Low-Resource NLP
+      - Ethical NLP
+      - Explainability & Interpretability in NLP
+      - Multimodality
+      - Speech & Audio in NLP
+      - Programming Languages in NLP
+      - Visual Data in NLP
+      - Structured Data in NLP
+      - Natural Language Interfaces
+      - Dialogue Systems & Conversational Agents
+      - Question Answering
+      - Semantic Text Processing
+      - Semantic Search
+      - Word Sense Disambiguation
+      - Knowledge Representation
+      - Representation Learning
+      - Language Models
+      - Semantic Parsing
+      - Text Complexity
+      - Discourse & Pragmatics
+      - Semantic Similarity

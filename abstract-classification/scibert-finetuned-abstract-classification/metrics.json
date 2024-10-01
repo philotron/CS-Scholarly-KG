@@ -1,0 +1,1 @@
+{"dir": "1-1-1-1-1", "batchsize": 32, "dropout": 0.25, "warmup": 100, "weight decay": 0.08, "learningrate": 3e-05, "acc": 0.7592891760904685, "f1": 0.7538552370059968}

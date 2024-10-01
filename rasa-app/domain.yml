@@ -1,0 +1,274 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - manually_reset_topic
+  - select_cluster_option
+  - topic_intent
+  - subtopic_intent 
+  - subtopic_cluster_intent
+  - parent_intent
+  - taxonomy_intent
+  - paper_selection_for_comparison_intent
+  - paper_selection_for_summarization_intent
+  - short
+  - everything   
+  - show_paper_list_for_comparison
+  - topic_predict_intent
+  - unclear_intent
+  - compare_overview_papers_intent
+  - compare_objective_papers_intent
+  - compare_results_papers_intent
+
+
+entities:
+  - topic_name
+  - query
+  - paper_chosen
+  - paper_a
+  - paper_b 
+  - selected_option
+  - number
+  - cluster_tag
+  - selected_clusters
+  - summarized_paper
+
+slots:
+  topic_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: topic_name
+  query:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: query
+  paper_chosen:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: paper_chosen
+  summarized_paper:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: summarized_paper
+  paper_a:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: paper_a
+  paper_b:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: paper_b
+  number:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: number
+  predicted_topic_name:
+    type: text
+    initial_value: random
+    mappings:
+      - type: custom
+  predicted_subtopic_name:
+    type: text
+    initial_value: random
+    mappings:
+      - type: custom
+  topic_is_set:
+    type: bool
+    initial_value: False
+    mappings:
+      - type: custom
+  papers_are_set:
+    type: bool
+    initial_value: False
+    mappings:
+      - type: custom
+  topic_predicted_as_random:
+    type: bool
+    initial_value: True
+    mappings:
+      - type: custom
+  paper_list:
+    type: list
+    initial_value: []
+    mappings:
+      - type: custom
+  option_1:
+    type: text
+    initial_value: random
+    mappings:
+      - type: custom
+  option_2:
+    type: text
+    initial_value: random
+    mappings:
+      - type: custom
+  option_3:
+    type: text
+    initial_value: random
+    mappings:
+      - type: custom
+  option_4:
+    type: text
+    initial_value: random
+    mappings:
+      - type: custom
+  option_5:
+    type: text
+    initial_value: random
+    mappings:
+      - type: custom
+  cluster_tag: 
+    type: text
+    initial_value: random
+    mappings:
+      - type: from_entity
+        entity: cluster_tag
+  selected_clusters:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: selected_clusters
+  cluster_level:
+    type: float
+    initial_value: 0
+    mappings:
+      - type: custom
+  cluster_level_change:
+    type: bool
+    initial_value: False
+    mappings:
+      - type: custom        
+  cluster_dict:
+    type: any
+    mappings:
+      - type: custom
+  last_cluster_index:
+    type: float
+    initial_value: 0
+    mappings:
+      - type: custom
+  final_cluster_paper_list:
+    type: any
+    mappings:
+      - type: custom
+  final_cluster_set:
+    type: bool
+    initial_value: False
+    mappings:
+      - type: custom                 
+
+
+responses:
+
+  utter_greet_and_ask:
+    - text: "Hey! I'm LISSA, I can assist you with exploring Natural Language Processing (NLP) publications. \nNLP is split into multiple main topics and subtopics, I can help you explore the topic taxonomy and define different topics. Try asking me 'What are the main topics in NLP?'"
+
+  utter_goodbye:
+    - text: "Goodbye! Looking forward to our next conversation about NLP!"
+
+  utter_iamabot:
+    - text: "I'm LISSA, a conversational interface for exploring scholarly literature."
+    - text: "I'm LISSA, I can assist you with exploring Natural Language Processing (NLP) publications. \nNLP covers a wide array of main topics and subtopics. I can help you with navigating this topic taxonomy and defining different topics. Just ask me, 'What are the main topics in NLP?' to get started."
+
+  utter_type_taxonomy:
+    - text: "Would you prefer a brief overview of the main topics or a comprehensive list of all subtopics?"
+      buttons:
+      - title: "Show me an overview of the main topics."
+        payload: /short
+      - title: "I want to see all subtopics."
+        payload: /everything
+
+  utter_taxonomy_general:
+    - text: "Okay! To help you gain a better understanding of NLP, I will provide a complete list including all main and connected ('-->') subtopics.
+    \n - Reasoning --> Argument Mining, Commonsense Reasoning, Textual Inference, Knowledge Graph Reasoning, Numerical Reasoning, Machine Reading Comprehension, Fact & Claim Verification \n - Text Generation --> Text Style Transfer, Dialogue Response Generation, Captioning, Speech Recognition, Code Generation, Machine Translation, Question Generation, Paraphrasing, Data-to-Text Generation, Summarization \n - Sentiment Analysis --> Opinion Mining, Emotion Analysis, Polarity Analysis, Stylistic Analysis, Aspect-based Sentiment Analysis, Intent Recognition \n - Multilinguality --> Machine Translation, Code-Switching, Cross-Lingual Transfer, Typology \n - Syntactic Text Processing --> Text Error Correction, Chunking, Tagging, Text Normalization, Phonology, Text Segmentation, Phonetics, Typology, Syntactic Parsing, Morphology \n - Linguistics & Cognitive NLP --> Cognitive Modeling, Psycholinguistics, Linguistic Theories \n - Information Extraction & Text Mining --> Summarization, Text Clustering, Open Information Extraction, Event Extraction, Topic Modeling, Text Classification, Named Entity Recognition, Coreference Resolution, Term Extraction, Relation Extraction \n - Information Retrieval --> Text Classification, Document Retrieval, Indexing, Semantic Search, Passage Retrieval \n - Responsible NLP --> Green & Sustainable NLP, Robustness in NLP, Low-Resource NLP, Ethical NLP, Explainability & Interpretability in NLP \n - Multimodality --> Speech & Audio in NLP, Programming Languages in NLP, Visual Data in NLP, Structured Data in NLP \n - Natural Language Interfaces --> Dialogue Systems & Conversational Agents, Question Answering \n - Semantic Text Processing --> Semantic Search, Word Sense Disambiguation, Knowledge Representation, Representation Learning, Language Models, Semantic Parsing, Text Complexity, Discourse & Pragmatics, Semantic Similarity   \n 
+    \n You can ask about definitions of these topics (such as 'What is Sentiment Analysis?') and then choose a subtopic to explore its clusters (for instance, 'What are the clusters of Aspect-based Sentiment Analysis?')."
+
+  utter_select_comparison_option:
+    - text: "What kind of comparison would you like to make?"
+      buttons:
+      - title: "Provide me with a general overview of the papers."
+        payload: /compare_overview_papers_intent
+      - title: "Compare the objectives of both papers."
+        payload: /compare_objective_papers_intent
+      - title: "Give me a comparison of the results from both papers."
+        payload: /compare_results_papers_intent
+      - title: "Please show all papers again."
+        payload: /show_paper_list_for_comparison  
+
+  utter_paper_list_call_back:
+    - text: "If you want to see the paper list again, please click the following button."
+      buttons:
+        - title: "Please show all papers again."
+          payload: /show_paper_list_for_comparison
+
+  utter_for_detail_information:
+    - text: "It seems I need more details to understand your request. Could you please elaborate further?"
+    - text: "To ensure I'm understanding your request, could you provide more specifics about what you need?"
+    - text: "Apologies, I'm not entirely clear on your question. Could you offer more detail about what you need help with?"
+    - text: "Apologies, I'm unsure about your request. Could you please describe it in more detail?"
+    - text: "Sorry for not being able to understand that. Can you clarify what specific information you need?"
+
+  utter_paper_url:
+    - text: Would you like to receive a direct link to access the paper? Type 'Yes' or 'No'.
+    - text: Do you need a link to explore the paper in depth? Type 'Yes' or 'No'.
+    - text: Are you interested in a direct link to the paper to read more about it? Type 'Yes' or 'No'.
+    - text: Shall I provide you with a link to the full paper for more information? Type 'Yes' or 'No'.
+
+  utter_taxonomy_level1: 
+    - text: "
+      \n- Reasoning
+      \n- Text Generation
+      \n- Sentiment Analysis
+      \n- Multilinguality
+      \n- Syntactic Text Processing
+      \n- Linguistics & Cognitive NLP
+      \n- Information Extraction & Text Mining
+      \n- Information Retrieval
+      \n- Responsible NLP
+      \n- Multimodality
+      \n- Natural Language Interfaces
+      \n- Semantic Text Processing 
+      \n 
+      \n You can ask me about definitions of these topics ('Define Multimodality.') or their subtopics ('What are the subtopics of Multimodality?')."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+  
+actions:
+  - action_get_topic_definition
+  - action_get_topic_children
+  - action_get_topic_parent
+  - action_get_nlp_taxonomy
+  - action_predict_topic
+  - action_reset_topic
+  - action_follow_up
+  - action_get_subclusters
+  - action_capture_cluster_selection
+  - action_show_paper_list_for_comparison
+  - action_paper_comparison
+  - action_get_paper_url
+  - action_get_paper_summarization
+  # - action_set_topic
+  # - action_print_predicted_topic
+  # - action_find_paper
+  # - action_get_paper_overview
+  # - action_get_paper_authors
+  # - action_get_paper_publication
+  # - action_get_paper_date
+  # - action_get_paper_citation_count
+  # - action_get_paper_abstract
+  # - action_compare_papers
+  # - action_test_paper_details

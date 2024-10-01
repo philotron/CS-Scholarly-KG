@@ -1,0 +1,121 @@
+version: "3.1"
+
+rules:
+  - rule: Say greet
+    steps:
+      - intent: greet
+      - action: utter_greet_and_ask
+
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: deal with unclear intent
+    steps:
+      - intent: unclear_intent
+      - action: utter_for_detail_information
+
+  - rule: Topic prediction correct
+    steps:
+      - action: action_predict_topic
+      - intent: affirm
+      - action: action_get_subclusters
+      # - action: action_get_subclusters
+
+  - rule: Topic prediction incorrect
+    steps:
+      - action: action_predict_topic
+      - intent: deny
+      - action: utter_for_detail_information
+      # - intent: topic_predict_intent
+      # - action: action_predict_topic
+
+  - rule: Subcluster exploration
+    steps:
+      - action: action_get_subclusters
+      - intent: select_cluster_option
+      - action: action_capture_cluster_selection
+      - action: action_show_paper_list_for_comparison
+
+  - rule: reset topic with yes
+    steps:
+      - intent: manually_reset_topic
+      - action: action_reset_topic
+      
+  - rule: get main topic definition
+    steps:
+      - action: action_get_topic_definition
+      - intent: subtopic_intent
+      - action: action_get_topic_children
+
+  - rule: get subtopic definition
+    steps:
+      - action: action_get_topic_definition
+      - intent: subtopic_cluster_intent
+      - action: action_get_subclusters  
+
+  - rule: get subtopic with deny
+    steps:
+      - action: action_get_topic_children
+      - intent: deny
+      - action: utter_taxonomy_general
+
+  - rule: show paper list for comparison
+    steps:
+      - intent: show_paper_list_for_comparison
+      - action: action_show_paper_list_for_comparison
+
+  - rule: paper option for comparison
+    steps:
+      - action: action_show_paper_list_for_comparison
+      - intent: paper_selection_for_comparison_intent
+      - action: utter_select_comparison_option
+
+  - rule: paper option for summarization
+    steps:
+      - action: action_show_paper_list_for_comparison
+      - intent: paper_selection_for_summarization_intent
+      - action: action_get_paper_summarization 
+      - action: utter_paper_url   
+
+  - rule: Paper comparison
+    steps:
+      - action: utter_select_comparison_option
+      - action: action_listen
+
+  - rule: Objective comparison
+    steps:
+      - intent: compare_objective_papers_intent
+      - action: action_paper_comparison
+      - action: utter_paper_url
+
+  - rule: Results comparison
+    steps:
+      - intent: compare_results_papers_intent
+      - action: action_paper_comparison
+      - action: utter_paper_url
+
+  - rule: Overviews comparison
+    steps:
+      - intent: compare_overview_papers_intent
+      - action: action_paper_comparison
+      - action: utter_paper_url
+
+  - rule: Provide paper URL in comparison
+    steps:
+      - action: utter_paper_url
+      - intent: affirm
+      - action: action_get_paper_url
+      - action: utter_paper_list_call_back
+
+  - rule: Paper comparison skip url
+    steps:
+      - action: utter_paper_url
+      - intent: deny
+      - action: utter_select_comparison_option
