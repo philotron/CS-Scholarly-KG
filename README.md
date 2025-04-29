@@ -27,7 +27,8 @@ Respond with just the cluster name, based on the overarching themes evident in t
 
 <details>
 <summary>Prompt 2: Comparative Text Summarization (Zephyr-7B-Beta)</summary>
-Prompt 2.1 <br>
+Prompt 2.1
+
 ```
 Please provide a comparative analysis of the objectives of two scientific papers. <br> 
 Refer the papers with their real ids: <br> 
@@ -35,9 +36,8 @@ Paper {id_a}'s objective is: {obj1} <br>
 Paper {id_b}'s objective is: {obj2} <br> 
 Highlight the key differences and similarities between Paper {id_a} and Paper {id_b}. Use simple language.:
 ```
-<br>
-<br> 
-Prompt 2.2 <br>
+Prompt 2.2
+
 ```
 Please provide a comparative analysis of the results of two scientific papers.: <br> 
 Refer the papers with their real ids: <br> 
@@ -45,9 +45,8 @@ Results of Paper {id_a}: {res1} <br>
 Results of Paper {id_b}: {res2} <br> 
 Highlight the key differences and similarities between Paper {id_a} and Paper {id_b}. Use simple language.:
 ```
-<br> 
-<br>
-Prompt 2.3 <br>
+Prompt 2.3
+
 ```
 Please provide a comparative analysis of the TLDR of two scientific papers.: <br> 
 TLDR of Paper {id_a}: {tldr1} <br> 
@@ -58,6 +57,7 @@ Highlight the key differences and similarities between Paper {id_a} and Paper {i
 
 <details>
 <summary>Prompt 3: LLM-Based Research Topic Classification (GPT-3.5-Turbo)</summary>
+
 ```
 You are supposed to classify a query into one of the topics provided. These topics are various fields of NLP. Your answer should be in the following format: *topic name*. <br> 
 Nothing else should be included in the output. <br> 
