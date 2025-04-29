@@ -18,6 +18,7 @@ This GitHub repository contains the code, models, and data resources associated 
 Listed below are the used prompts for the large language models. Dynamically inserted variables are enclosed within curly brackets. Note that Prompt 3 is not implemented and was only used for experiments for the classification of research topics.
 <details>
 <summary>Prompt 1: Cluster Name Generation (Zephyr-7B-Beta)</summary>
+
 ```
 Considering the themes and topics from the following TFIDF cluster tag: "{tfidf_cluster_name}", please provide a concise and descriptive name for a cluster that includes these {len(paper_list)} academic papers: \n <br> 
 {paper_titles_formatted}
